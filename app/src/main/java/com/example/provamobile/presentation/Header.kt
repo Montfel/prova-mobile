@@ -1,6 +1,5 @@
 package com.example.provamobile.presentation
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -10,16 +9,16 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Surface
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -28,22 +27,17 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.example.provamobile.R
 import com.example.provamobile.ui.theme.Gray55
 import com.example.provamobile.ui.theme.PrimaryColor
+import kotlinx.coroutines.Job
 
 @Composable
-fun Header() {
-    Surface(
-        elevation = 1.dp,
-        shape = RoundedCornerShape(bottomEnd = 32.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(104.dp)
-    ) {
+fun Header(response: Job) {
+    Card(shape = RoundedCornerShape(bottomEnd = 32.dp)) {
         Column(verticalArrangement = Arrangement.SpaceBetween) {
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -65,9 +59,13 @@ fun Header() {
                     fontSize = 33.sp,
                     fontFamily = FontFamily(Font(R.font.bebas_neue))
                 )
-                Image(
-                    painter = painterResource(id = R.drawable.profile_image),
-                    contentDescription = null
+
+                AsyncImage(
+                    model = "https://sscdn.co/gcs/studiosol/2022/mobile/avatar.jpg",
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(32.dp)
+                        .clip(CircleShape)
                 )
             }
             Row(
@@ -108,8 +106,8 @@ fun Header() {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun HeaderPreview() {
-    Header()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun HeaderPreview() {
+//    Header()
+//}

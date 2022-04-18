@@ -10,4 +10,5 @@
     <string name="favorite_books">Livros favoritos</string>
     <string name="show_all">ver todos</string>
     <string name="favorite_authors">Autores favoritos</string>
+    <string name="library">Biblioteca</string>
 </resources>
