@@ -19,22 +19,22 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.provamobile.R
-import com.example.provamobile.presentation.ui.theme.Gray55
-import com.example.provamobile.presentation.ui.theme.Gray75
-import com.example.provamobile.presentation.ui.theme.ProvaMobileTheme
+import com.example.provamobile.presentation.theme.Gray55
+import com.example.provamobile.presentation.theme.Gray75
+import com.example.provamobile.presentation.theme.ProvaMobileTheme
 
 class BookActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -64,20 +64,25 @@ class BookActivity : ComponentActivity() {
                                         brush = Brush.verticalGradient(gradientColor),
                                         alpha = 0.7f
                                     )
+                            )
+                            Row(
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(10.dp)
                             ) {
-                                Row(
-                                    horizontalArrangement = Arrangement.SpaceBetween,
-                                    modifier = Modifier
-                                        .padding(horizontal = 20.dp)
-                                        .fillMaxWidth()
-                                ) {
+                                IconButton(onClick = { /*TODO*/ }) {
                                     Icon(
                                         painter = painterResource(id = R.drawable.ic_baseline_arrow_back_24),
-                                        contentDescription = null
+                                        contentDescription = null,
+                                        tint = Color.White
                                     )
+                                }
+                                IconButton(onClick = { /*TODO*/ }) {
                                     Icon(
                                         painter = painterResource(id = R.drawable.ic_baseline_more_vert_24),
-                                        contentDescription = null
+                                        contentDescription = null,
+                                        tint = Color.White
                                     )
                                 }
                             }
@@ -124,7 +129,6 @@ class BookActivity : ComponentActivity() {
                                     }
                                 }
                             }
-
                         }
                     }
                 }

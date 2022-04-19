@@ -32,8 +32,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.provamobile.R
-import com.example.provamobile.presentation.ui.theme.Gray55
-import com.example.provamobile.presentation.ui.theme.PrimaryColor
+import com.example.provamobile.presentation.theme.Gray55
+import com.example.provamobile.presentation.theme.PrimaryColor
 import kotlinx.coroutines.Job
 
 @Composable

@@ -20,8 +20,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.provamobile.R
-import com.example.provamobile.presentation.ui.theme.Gray9E
-import com.example.provamobile.presentation.ui.theme.PrimaryColor
+import com.example.provamobile.presentation.theme.Gray9E
+import com.example.provamobile.presentation.theme.PrimaryColor
 
 @Composable
 fun BottomNavigationCustom() {

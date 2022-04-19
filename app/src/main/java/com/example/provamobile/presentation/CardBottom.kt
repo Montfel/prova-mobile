@@ -27,15 +27,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.provamobile.R
-import com.example.provamobile.presentation.ui.theme.Gray55
-import com.example.provamobile.presentation.ui.theme.Gray75
-import com.example.provamobile.presentation.ui.theme.GrayE0
-import com.example.provamobile.presentation.ui.theme.PrimaryColor
+import com.example.provamobile.presentation.theme.Gray55
+import com.example.provamobile.presentation.theme.Gray75
+import com.example.provamobile.presentation.theme.GrayE0
+import com.example.provamobile.presentation.theme.PrimaryColor
 
 @Composable
 fun CardBottom() {
     Card(shape = RoundedCornerShape(topStart = 32.dp)) {
-        Column(modifier = Modifier.padding(top = 32.dp, start = 20.dp, end = 20.dp)) {
+        Column(modifier = Modifier.padding(vertical = 32.dp, horizontal = 20.dp)) {
             Section(text = R.string.favorite_authors)
 
             Spacer(modifier = Modifier.height(20.dp))
@@ -135,34 +135,64 @@ fun CardBottom() {
                 }
             }
 
-//            LazyColumn {
-//                item {
-//                    Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-//                        AsyncImage(
-//                            model = "https://sscdn.co/gcs/studiosol/2022/mobile/avatar.jpg",
-//                            contentDescription = null,
-//                            contentScale = ContentScale.Crop,
-//                            modifier = Modifier
-//                                .width(48.dp)
-//                                .height(70.dp)
-//                                .clip(RoundedCornerShape(8.dp))
-//                        )
-//                        Column(verticalArrangement = Arrangement.Center) {
-//                            Text(
-//                                text = "O duque e eu (Os Bridgertons Livro Novo 1)",
-//                                fontWeight = FontWeight.Bold,
-//                                fontSize = 16.sp,
-//                                color = Gray55
-//                            )
-//                            Text(
-//                                text = "Julia Quinn",
-//                                fontSize = 14.sp,
-//                                color = Gray75
-//                            )
-//                        }
-//                    }
-//                }
-//            }
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    AsyncImage(
+                        model = "https://sscdn.co/gcs/studiosol/2022/mobile/avatar.jpg",
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .width(48.dp)
+                            .height(70.dp)
+                            .clip(RoundedCornerShape(8.dp))
+                    )
+                    Column(verticalArrangement = Arrangement.Center) {
+                        Text(
+                            text = "O duque e eu (Os Bridgertons Livro Novo 1)",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 16.sp,
+                            color = Gray55
+                        )
+                        Text(
+                            text = "Julia Quinn",
+                            fontSize = 14.sp,
+                            color = Gray75
+                        )
+                    }
+                }
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    AsyncImage(
+                        model = "https://sscdn.co/gcs/studiosol/2022/mobile/avatar.jpg",
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .width(48.dp)
+                            .height(70.dp)
+                            .clip(RoundedCornerShape(8.dp))
+                    )
+                    Column(verticalArrangement = Arrangement.Center) {
+                        Text(
+                            text = "O duque e eu (Os Bridgertons Livro Novo 1)",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 16.sp,
+                            color = Gray55
+                        )
+                        Text(
+                            text = "Julia Quinn",
+                            fontSize = 14.sp,
+                            color = Gray75
+                        )
+                    }
+                }
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.provamobile.presentation.ui.theme
+package com.example.provamobile.presentation.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
