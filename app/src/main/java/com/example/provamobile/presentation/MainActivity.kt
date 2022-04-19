@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
                             .verticalScroll(rememberScrollState())
                             .padding(paddingValue)
                     ) {
-                        Header(response)
+                        Header()
                         FavoriteBooks()
                         CardBottom()
                     }

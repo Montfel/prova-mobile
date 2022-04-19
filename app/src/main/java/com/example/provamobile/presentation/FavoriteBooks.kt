@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,17 +26,19 @@ import com.example.provamobile.presentation.theme.Gray75
 
 @Composable
 fun FavoriteBooks() {
-    Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(20.dp),
+        modifier = Modifier.padding(horizontal = 20.dp)
+    ) {
         Section(text = R.string.favorite_books)
 
-        LazyRow() {
-            item {
-                Spacer(modifier = Modifier.width(20.dp))
-            }
+        LazyRow(
+            horizontalArrangement = Arrangement.spacedBy(20.dp),
+        ) {
             item {
                 Column(
                     modifier = Modifier
-                        .clickable { }
+                        .clickable {  }
                         .width(136.dp)
                 ) {
                     AsyncImage(
@@ -155,9 +158,6 @@ fun FavoriteBooks() {
                         color = Gray75
                     )
                 }
-            }
-            item {
-                Spacer(modifier = Modifier.width(20.dp))
             }
         }
     }

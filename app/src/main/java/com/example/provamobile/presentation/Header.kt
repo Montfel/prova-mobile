@@ -37,7 +37,7 @@ import com.example.provamobile.presentation.theme.PrimaryColor
 import kotlinx.coroutines.Job
 
 @Composable
-fun Header(response: Job) {
+fun Header() {
     Card(shape = RoundedCornerShape(bottomEnd = 32.dp)) {
         Column(verticalArrangement = Arrangement.SpaceBetween) {
             Row(
