@@ -1,4 +1,4 @@
-package com.example.provamobile.ui.theme
+package com.example.provamobile.presentation.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

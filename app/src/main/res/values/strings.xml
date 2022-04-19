@@ -11,4 +11,5 @@
     <string name="show_all">ver todos</string>
     <string name="favorite_authors">Autores favoritos</string>
     <string name="library">Biblioteca</string>
+    <string name="title_activity_book">BookActivity</string>
 </resources>

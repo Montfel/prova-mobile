@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -33,8 +32,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.provamobile.R
-import com.example.provamobile.ui.theme.Gray55
-import com.example.provamobile.ui.theme.PrimaryColor
+import com.example.provamobile.presentation.ui.theme.Gray55
+import com.example.provamobile.presentation.ui.theme.PrimaryColor
 import kotlinx.coroutines.Job
 
 @Composable

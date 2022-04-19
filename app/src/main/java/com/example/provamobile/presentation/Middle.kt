@@ -21,17 +21,19 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.provamobile.R
-import com.example.provamobile.ui.theme.Gray55
-import com.example.provamobile.ui.theme.Gray75
+import com.example.provamobile.presentation.ui.theme.Gray55
+import com.example.provamobile.presentation.ui.theme.Gray75
 
 @Composable
 fun Middle() {
-    Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(20.dp),
+        modifier = Modifier.padding(horizontal = 20.dp)
+    ) {
         Section(text = R.string.favorite_books)
 
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(20.dp),
-            modifier = Modifier.padding(start = 20.dp)
         ) {
             item {
                 Column(

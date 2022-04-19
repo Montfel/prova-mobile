@@ -7,6 +7,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,8 +16,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
 import com.example.provamobile.apolloClient
-import com.example.provamobile.ui.theme.GrayF2
-import com.example.provamobile.ui.theme.ProvaMobileTheme
+import com.example.provamobile.presentation.ui.theme.GrayF2
+import com.example.provamobile.presentation.ui.theme.ProvaMobileTheme
 import com.example.rocketreserver.UserPictureQuery
 
 class MainActivity : ComponentActivity() {
@@ -27,13 +29,18 @@ class MainActivity : ComponentActivity() {
         }
         setContent {
             ProvaMobileTheme {
+                val scrollState = rememberScrollState()
                 Scaffold(
-                    topBar = { Header(response) },
                     bottomBar = { BottomNavigationCustom() },
                     backgroundColor = GrayF2,
-                    modifier = Modifier.fillMaxSize()
                 ) {
-                    Column(verticalArrangement = Arrangement.spacedBy(32.dp)) {
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(32.dp),
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .verticalScroll(scrollState)
+                    ) {
+                        Header(response)
                         Middle()
                         CardBottom()
                     }
@@ -42,6 +49,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable

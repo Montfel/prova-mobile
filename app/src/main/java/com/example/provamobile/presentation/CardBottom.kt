@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -28,23 +27,60 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.provamobile.R
-import com.example.provamobile.ui.theme.Gray55
-import com.example.provamobile.ui.theme.Gray75
-import com.example.provamobile.ui.theme.GrayE0
-import com.example.provamobile.ui.theme.PrimaryColor
+import com.example.provamobile.presentation.ui.theme.Gray55
+import com.example.provamobile.presentation.ui.theme.Gray75
+import com.example.provamobile.presentation.ui.theme.GrayE0
+import com.example.provamobile.presentation.ui.theme.PrimaryColor
 
 @Composable
 fun CardBottom() {
     Card(shape = RoundedCornerShape(topStart = 32.dp)) {
-        Column {
+        Column(modifier = Modifier.padding(top = 32.dp, start = 20.dp, end = 20.dp)) {
             Section(text = R.string.favorite_authors)
 
             Spacer(modifier = Modifier.height(20.dp))
 
             LazyRow(
                 horizontalArrangement = Arrangement.spacedBy(20.dp),
-                modifier = Modifier.padding(horizontal = 20.dp)
             ) {
+                item {
+                    Card(
+                        shape = RoundedCornerShape(8.dp),
+                        border = BorderStroke(width = 1.dp, color = GrayE0),
+                        modifier = Modifier
+                            .width(250.dp)
+                            .height(69.dp)
+                    ) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(20.dp)
+                        ) {
+                            AsyncImage(
+                                model = "https://sscdn.co/gcs/studiosol/2022/mobile/avatar.jpg",
+                                contentDescription = null,
+                                contentScale = ContentScale.Crop,
+                                modifier = Modifier
+                                    .width(63.dp)
+                                    .height(67.dp)
+                                    .clip(RoundedCornerShape(8.dp))
+                            )
+                            Column(verticalArrangement = Arrangement.Center) {
+                                Text(
+                                    text = "Connie",
+                                    fontSize = 16.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = Gray55
+                                )
+                                Text(
+                                    text = "6 Livros",
+                                    fontSize = 14.sp,
+                                    color = Gray75
+                                )
+                            }
+                        }
+                    }
+                }
+
                 item {
                     Card(
                         shape = RoundedCornerShape(8.dp),
@@ -84,7 +120,11 @@ fun CardBottom() {
                 }
             }
 
+            Spacer(modifier = Modifier.height(30.dp))
+
             Section(text = R.string.library, showAll = false)
+
+            Spacer(modifier = Modifier.height(20.dp))
 
             LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 item {
@@ -95,34 +135,34 @@ fun CardBottom() {
                 }
             }
 
-            LazyColumn {
-                item {
-                    Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                        AsyncImage(
-                            model = "https://sscdn.co/gcs/studiosol/2022/mobile/avatar.jpg",
-                            contentDescription = null,
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier
-                                .width(48.dp)
-                                .height(70.dp)
-                                .clip(RoundedCornerShape(8.dp))
-                        )
-                        Column(verticalArrangement = Arrangement.Center) {
-                            Text(
-                                text = "O duque e eu (Os Bridgertons Livro Novo 1)",
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 16.sp,
-                                color = Gray55
-                            )
-                            Text(
-                                text = "Julia Quinn",
-                                fontSize = 14.sp,
-                                color = Gray75
-                            )
-                        }
-                    }
-                }
-            }
+//            LazyColumn {
+//                item {
+//                    Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+//                        AsyncImage(
+//                            model = "https://sscdn.co/gcs/studiosol/2022/mobile/avatar.jpg",
+//                            contentDescription = null,
+//                            contentScale = ContentScale.Crop,
+//                            modifier = Modifier
+//                                .width(48.dp)
+//                                .height(70.dp)
+//                                .clip(RoundedCornerShape(8.dp))
+//                        )
+//                        Column(verticalArrangement = Arrangement.Center) {
+//                            Text(
+//                                text = "O duque e eu (Os Bridgertons Livro Novo 1)",
+//                                fontWeight = FontWeight.Bold,
+//                                fontSize = 16.sp,
+//                                color = Gray55
+//                            )
+//                            Text(
+//                                text = "Julia Quinn",
+//                                fontSize = 14.sp,
+//                                color = Gray75
+//                            )
+//                        }
+//                    }
+//                }
+//            }
         }
     }
 }
