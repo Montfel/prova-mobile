@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,39 +32,41 @@ import com.example.rocketreserver.CategoriesQuery
 import com.example.rocketreserver.FavoriteAuthorsQuery
 import com.example.rocketreserver.FavoriteBooksQuery
 import com.example.rocketreserver.UserPictureQuery
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class HomeActivity : ComponentActivity() {
+
+    private val homeViewModel: HomeViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycleScope.launchWhenResumed {
             val responseUser = try {
                 apolloClient.query(UserPictureQuery()).execute()
             } catch (e: ApolloException) {
-                Log.d("UserPicture", "Failure", e)
                 null
             }
             val responseFavoriteBooks = try {
                 apolloClient.query(FavoriteBooksQuery()).execute()
             } catch (e: ApolloException) {
-                Log.d("FavoriteBooks", "Failure", e)
                 null
             }
             val responseFavoriteAuthors = try {
                 apolloClient.query(FavoriteAuthorsQuery()).execute()
             } catch (e: ApolloException) {
-                Log.d("FavoriteBooks", "Failure", e)
                 null
             }
             val responseCategories = try {
                 apolloClient.query(CategoriesQuery()).execute()
             } catch (e: ApolloException) {
-                Log.d("FavoriteBooks", "Failure", e)
                 null
             }
             val responseAllBooks = try {
                 apolloClient.query(AllBooksQuery()).execute()
             } catch (e: ApolloException) {
-                Log.d("FavoriteBooks", "Failure", e)
                 null
             }
             val pic = responseUser?.data?.userPicture

@@ -1,5 +1,5 @@
 query BookDetail($id : ID!) {
-    book(id: $id) { #TODO
+    book(id: $id) {
         id, name, author { name }, cover, description, isFavorite
     }
 }

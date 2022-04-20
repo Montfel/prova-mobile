@@ -42,7 +42,9 @@ import com.example.provamobile.presentation.theme.Gray55
 import com.example.provamobile.presentation.theme.Gray75
 import com.example.provamobile.presentation.theme.ProvaMobileTheme
 import com.example.rocketreserver.BookDetailQuery
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BookDetailActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +55,6 @@ class BookDetailActivity : ComponentActivity() {
                 try {
                     apolloClient.query(BookDetailQuery(id)).execute()
                 } catch (e: ApolloException) {
-                    Log.d("FavoriteBooks", "Failure", e)
                     null
                 }
             }
