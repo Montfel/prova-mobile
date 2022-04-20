@@ -1,4 +1,4 @@
-package com.example.provamobile.presentation
+package com.example.provamobile.presentation.components
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement

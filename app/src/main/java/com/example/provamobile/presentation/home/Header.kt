@@ -1,4 +1,4 @@
-package com.example.provamobile.presentation
+package com.example.provamobile.presentation.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -34,7 +34,6 @@ import coil.compose.AsyncImage
 import com.example.provamobile.R
 import com.example.provamobile.presentation.theme.Gray55
 import com.example.provamobile.presentation.theme.PrimaryColor
-import kotlinx.coroutines.Job
 
 @Composable
 fun Header(picture: String?) {

@@ -1,10 +1,11 @@
-package com.example.provamobile.presentation
+package com.example.provamobile.presentation.bookdetail
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -35,13 +36,14 @@ import androidx.lifecycle.lifecycleScope
 import coil.compose.AsyncImage
 import com.apollographql.apollo3.exception.ApolloException
 import com.example.provamobile.R
-import com.example.provamobile.apolloClient
+import com.example.provamobile.data.apolloClient
+import com.example.provamobile.presentation.components.BottomNavigationCustom
 import com.example.provamobile.presentation.theme.Gray55
 import com.example.provamobile.presentation.theme.Gray75
 import com.example.provamobile.presentation.theme.ProvaMobileTheme
 import com.example.rocketreserver.BookDetailQuery
 
-class BookActivity : ComponentActivity() {
+class BookDetailActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -113,8 +115,13 @@ class BookActivity : ComponentActivity() {
                                                     fontSize = 20.sp,
                                                     modifier = Modifier.weight(1f)
                                                 )
-                                                Icon(
-                                                    painter = painterResource(id = R.drawable.ic_baseline_favorite_border_24),
+                                                Image(
+                                                    painter = painterResource(
+                                                        id = if (bookDetail?.isFavorite
+                                                                ?: false
+                                                        ) R.drawable.ic_baseline_favorite_24_primary
+                                                        else R.drawable.ic_baseline_favorite_border_24
+                                                    ),
                                                     contentDescription = null
                                                 )
                                             }

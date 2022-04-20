@@ -12,12 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProvaMobile">
         <activity
-            android:name=".presentation.BookActivity"
+            android:name=".presentation.bookdetail.BookDetailActivity"
             android:exported="false"
             android:theme="@style/Theme.ProvaMobile" >
         </activity>
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.home.HomeActivity"
             android:exported="true"
             android:theme="@style/Theme.ProvaMobile">
             <intent-filter>

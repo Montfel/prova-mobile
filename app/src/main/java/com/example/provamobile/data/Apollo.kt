@@ -1,4 +1,4 @@
-package com.example.provamobile
+package com.example.provamobile.data
 
 import com.apollographql.apollo3.ApolloClient
 

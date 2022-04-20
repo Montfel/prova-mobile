@@ -1,4 +1,4 @@
-package com.example.provamobile.presentation
+package com.example.provamobile.presentation.home
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.provamobile.R
+import com.example.provamobile.presentation.components.Section
 import com.example.provamobile.presentation.theme.Gray55
 import com.example.provamobile.presentation.theme.Gray75
 import com.example.rocketreserver.FavoriteBooksQuery

@@ -1,4 +1,4 @@
-package com.example.provamobile.presentation
+package com.example.provamobile.presentation.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -18,7 +18,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
 import com.apollographql.apollo3.exception.ApolloException
-import com.example.provamobile.apolloClient
+import com.example.provamobile.data.apolloClient
+import com.example.provamobile.presentation.bookdetail.BookDetailActivity
+import com.example.provamobile.presentation.components.BottomNavigationCustom
+import com.example.provamobile.presentation.home.CardBottom
+import com.example.provamobile.presentation.home.FavoriteBooks
+import com.example.provamobile.presentation.home.Header
 import com.example.provamobile.presentation.theme.GrayF2
 import com.example.provamobile.presentation.theme.ProvaMobileTheme
 import com.example.rocketreserver.AllBooksQuery
@@ -27,7 +32,7 @@ import com.example.rocketreserver.FavoriteAuthorsQuery
 import com.example.rocketreserver.FavoriteBooksQuery
 import com.example.rocketreserver.UserPictureQuery
 
-class MainActivity : ComponentActivity() {
+class HomeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycleScope.launchWhenResumed {
@@ -66,7 +71,7 @@ class MainActivity : ComponentActivity() {
             val favoriteAuthors = responseFavoriteAuthors?.data?.favoriteAuthors
             val categories = responseCategories?.data?.allBooks
             val allBooks = responseAllBooks?.data?.allBooks
-            val intent = Intent(this@MainActivity, BookActivity::class.java)
+            val intent = Intent(this@HomeActivity, BookDetailActivity::class.java)
             setContent {
                 ProvaMobileTheme {
                     Scaffold(
@@ -104,7 +109,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable

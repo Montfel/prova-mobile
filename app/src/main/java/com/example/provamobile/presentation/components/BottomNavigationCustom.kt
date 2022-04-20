@@ -1,4 +1,4 @@
-package com.example.provamobile.presentation
+package com.example.provamobile.presentation.components
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -69,7 +69,7 @@ fun BottomNavigationCustom() {
                 Item(
                     text = R.string.favorite,
                     color = Gray9E,
-                    drawable = R.drawable.ic_baseline_favorite_24
+                    drawable = R.drawable.ic_baseline_favorite_24_gray
                 )
             }
         )
