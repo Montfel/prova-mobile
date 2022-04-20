@@ -37,7 +37,7 @@ import com.example.provamobile.presentation.theme.PrimaryColor
 import kotlinx.coroutines.Job
 
 @Composable
-fun Header() {
+fun Header(picture: String?) {
     Card(shape = RoundedCornerShape(bottomEnd = 32.dp)) {
         Column(verticalArrangement = Arrangement.SpaceBetween) {
             Row(
@@ -62,7 +62,7 @@ fun Header() {
                 )
 
                 AsyncImage(
-                    model = "https://sscdn.co/gcs/studiosol/2022/mobile/avatar.jpg",
+                    model = picture ?: "",
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier

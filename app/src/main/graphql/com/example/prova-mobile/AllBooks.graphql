@@ -1,0 +1,5 @@
+query AllBooks {
+    allBooks {
+        id, name, author { name }, cover
+    }
+}
