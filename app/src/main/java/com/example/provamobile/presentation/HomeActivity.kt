@@ -1,4 +1,4 @@
-package com.example.provamobile.presentation.home
+package com.example.provamobile.presentation
 
 import android.content.Intent
 import android.os.Bundle
@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
 import com.apollographql.apollo3.exception.ApolloException
 import com.example.provamobile.data.apolloClient
+import com.example.provamobile.presentation.NavigationComponent
 import com.example.provamobile.presentation.bookdetail.BookDetailActivity
 import com.example.provamobile.presentation.components.BottomNavigationCustom
 import com.example.provamobile.presentation.theme.GrayF2
@@ -35,7 +36,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeActivity : ComponentActivity() {
 
-    private val homeViewModel: HomeViewModel by viewModels()
+//    private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,46 +71,11 @@ class HomeActivity : ComponentActivity() {
             val favoriteAuthors = responseFavoriteAuthors?.data?.favoriteAuthors
             val categories = responseCategories?.data?.allBooks
             val allBooks = responseAllBooks?.data?.allBooks
-            val intent = Intent(this@HomeActivity, BookDetailActivity::class.java)
             setContent {
                 ProvaMobileTheme {
-                    Scaffold(
-                        bottomBar = { BottomNavigationCustom() },
-                        backgroundColor = GrayF2,
-                    ) { paddingValue ->
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(32.dp),
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .verticalScroll(rememberScrollState())
-                                .padding(paddingValue)
-                        ) {
-                            Header(pic)
-                            FavoriteBooks(
-                                favoriteBooks = favoriteBooks,
-                                onFavoriteBookClicked = {
-                                    intent.putExtra("id", it)
-                                    startActivity(intent)
-                                }
-                            )
-                            Card(shape = RoundedCornerShape(topStart = 30.dp)) {
-                                Column(
-                                    verticalArrangement = Arrangement.spacedBy(32.dp),
-                                    modifier = Modifier.padding(vertical = 32.dp)
-                                ) {
-                                    FavoriteAuthors(favoriteAuthors = favoriteAuthors)
-                                    Library(
-                                        categories = categories,
-                                        allBooks = allBooks,
-                                        onBookClicked = {
-                                            intent.putExtra("id", it)
-                                            startActivity(intent)
-                                        }
-                                    )
-                                }
-                            }
-                        }
-                    }
+                    NavigationComponent(
+
+                    )
                 }
             }
         }
