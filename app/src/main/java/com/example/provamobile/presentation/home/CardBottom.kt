@@ -4,6 +4,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -49,12 +50,13 @@ fun CardBottom(
 ) {
     val current = LocalContext.current
     Card(shape = RoundedCornerShape(topStart = 32.dp)) {
-        Column(modifier = Modifier.padding(vertical = 32.dp, horizontal = 20.dp)) {
+        Column(modifier = Modifier.padding(vertical = 32.dp)) {
             Section(text = R.string.favorite_authors)
 
             Spacer(modifier = Modifier.height(20.dp))
 
             LazyRow(
+                contentPadding = PaddingValues(horizontal = 20.dp),
                 horizontalArrangement = Arrangement.spacedBy(20.dp),
             ) {
                 items(favoriteAuthors ?: listOf()) {
@@ -117,7 +119,10 @@ fun CardBottom(
                 }
                 ?.sorted()
 
-            LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+            LazyRow(
+                contentPadding = PaddingValues(horizontal = 20.dp),
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
                 item {
                     CustomChip(text = stringResource(id = R.string.all), selected = true)
                 }
@@ -128,7 +133,10 @@ fun CardBottom(
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(20.dp),
+                modifier = Modifier.padding(horizontal = 20.dp)
+            ) {
                 allBooks?.forEach {
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(10.dp),

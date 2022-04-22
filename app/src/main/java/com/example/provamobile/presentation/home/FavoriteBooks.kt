@@ -3,9 +3,9 @@ package com.example.provamobile.presentation.home
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -31,13 +31,11 @@ fun FavoriteBooks(
     favoriteBooks: List<FavoriteBooksQuery.FavoriteBook>?,
     onFavoriteBookClicked: (String) -> Unit
 ) {
-    Column(
-        verticalArrangement = Arrangement.spacedBy(20.dp),
-        modifier = Modifier.padding(horizontal = 20.dp)
-    ) {
+    Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
         Section(text = R.string.favorite_books)
 
         LazyRow(
+            contentPadding = PaddingValues(horizontal = 20.dp),
             horizontalArrangement = Arrangement.spacedBy(20.dp),
         ) {
             items(favoriteBooks ?: listOf()) {
