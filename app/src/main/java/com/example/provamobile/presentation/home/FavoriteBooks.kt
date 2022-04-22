@@ -76,6 +76,6 @@ fun FavoriteBooks(
 
 //@Preview(showBackground = true)
 //@Composable
-//fun MiddlePreview() {
+//fun FavoriteBooksPreview() {
 //    FavoriteBooks()
 //}

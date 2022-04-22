@@ -2,7 +2,6 @@ package com.example.provamobile.presentation.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -11,7 +10,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -22,9 +23,6 @@ import com.apollographql.apollo3.exception.ApolloException
 import com.example.provamobile.data.apolloClient
 import com.example.provamobile.presentation.bookdetail.BookDetailActivity
 import com.example.provamobile.presentation.components.BottomNavigationCustom
-import com.example.provamobile.presentation.home.CardBottom
-import com.example.provamobile.presentation.home.FavoriteBooks
-import com.example.provamobile.presentation.home.Header
 import com.example.provamobile.presentation.theme.GrayF2
 import com.example.provamobile.presentation.theme.ProvaMobileTheme
 import com.example.rocketreserver.AllBooksQuery
@@ -33,8 +31,6 @@ import com.example.rocketreserver.FavoriteAuthorsQuery
 import com.example.rocketreserver.FavoriteBooksQuery
 import com.example.rocketreserver.UserPictureQuery
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeActivity : ComponentActivity() {
@@ -96,15 +92,22 @@ class HomeActivity : ComponentActivity() {
                                     startActivity(intent)
                                 }
                             )
-                            CardBottom(
-                                favoriteAuthors = favoriteAuthors,
-                                categories = categories,
-                                allBooks = allBooks,
-                                onBookClicked = {
-                                    intent.putExtra("id", it)
-                                    startActivity(intent)
+                            Card(shape = RoundedCornerShape(topStart = 30.dp)) {
+                                Column(
+                                    verticalArrangement = Arrangement.spacedBy(32.dp),
+                                    modifier = Modifier.padding(vertical = 32.dp)
+                                ) {
+                                    FavoriteAuthors(favoriteAuthors = favoriteAuthors)
+                                    Library(
+                                        categories = categories,
+                                        allBooks = allBooks,
+                                        onBookClicked = {
+                                            intent.putExtra("id", it)
+                                            startActivity(intent)
+                                        }
+                                    )
                                 }
-                            )
+                            }
                         }
                     }
                 }
