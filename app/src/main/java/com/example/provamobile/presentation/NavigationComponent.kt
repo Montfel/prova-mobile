@@ -18,17 +18,21 @@ fun NavigationComponent(
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "home") {
         composable("home") {
+
             val homeViewModel = hiltViewModel<HomeViewModel>()
+            runBlocking {
+                homeViewModel.getHomeData()
+            }
             Home(
                 navController = navController,
                 viewModel = homeViewModel
             )
         }
         composable("bookDetail/{id}") {
-            val id = navController.previousBackStackEntry?.arguments?.getString("id")
+            val id = it.arguments?.getString("id")
             val bookDetailViewModel = hiltViewModel<BookDetailViewModel>()
             runBlocking {
-                bookDetailViewModel.setData(id = id)
+                bookDetailViewModel.getBookDetailData(id = id)
             }
             BookDetail(
                 navController = navController,

@@ -1,5 +1,0 @@
-query FavoriteAuthors {
-    favoriteAuthors {
-        id, name, picture, booksCount
-    }
-}

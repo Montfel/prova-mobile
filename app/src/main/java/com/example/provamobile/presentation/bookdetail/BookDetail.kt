@@ -49,7 +49,7 @@ fun BookDetail(
         ) {
             Box(Modifier.fillMaxSize()) {
                 AsyncImage(
-                    model = viewModel.bookDetail.book.cover,
+                    model = viewModel.bookDetail?.book?.cover,
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -91,7 +91,7 @@ fun BookDetail(
                         Column(modifier = Modifier.padding(top = 32.dp, start = 20.dp, end = 20.dp)) {
                             Row(horizontalArrangement = Arrangement.spacedBy(20.dp)) {
                                 Text(
-                                    text = viewModel.bookDetail.book.name,
+                                    text = viewModel.bookDetail?.book?.name ?: "",
                                     color = Gray55,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 20.sp,
@@ -99,7 +99,9 @@ fun BookDetail(
                                 )
                                 Image(
                                     painter = painterResource(
-                                        id = if (viewModel.bookDetail.book.isFavorite) R.drawable.ic_baseline_favorite_24_primary
+                                        id = if (viewModel.bookDetail?.book?.isFavorite
+                                                ?: false
+                                        ) R.drawable.ic_baseline_favorite_24_primary
                                         else R.drawable.ic_baseline_favorite_border_24
                                     ),
                                     contentDescription = null
@@ -109,7 +111,7 @@ fun BookDetail(
                             Spacer(modifier = Modifier.height(6.dp))
 
                             Text(
-                                text = viewModel.bookDetail.book.author.name,
+                                text = viewModel.bookDetail?.book?.author?.name ?: "",
                                 color = Gray75,
                                 fontSize = 14.sp
                             )
@@ -117,7 +119,7 @@ fun BookDetail(
                             Spacer(modifier = Modifier.height(20.dp))
 
                             Text(
-                                text = viewModel.bookDetail.book.description,
+                                text = viewModel.bookDetail?.book?.description ?: "",
                                 color = Gray55,
                                 fontSize = 16.sp
                             )

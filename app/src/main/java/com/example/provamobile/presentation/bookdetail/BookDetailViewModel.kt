@@ -10,14 +10,14 @@ import javax.inject.Inject
 @HiltViewModel
 class BookDetailViewModel @Inject constructor() : ViewModel() {
 
-    lateinit var bookDetail: BookDetailQuery.Data
+    var bookDetail: BookDetailQuery.Data? = null
 
-    suspend fun setData(id: String? = "1") {
+    suspend fun getBookDetailData(id: String?) {
         val response = id?.let {
             try {
-                apolloClient.query(BookDetailQuery(id)).execute()
+                apolloClient.query(BookDetailQuery(it)).execute()
             } catch (e: ApolloException) {
-                null
+                throw Exception()
             }
         }
         response?.data?.let {

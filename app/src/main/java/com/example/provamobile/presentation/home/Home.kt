@@ -1,6 +1,5 @@
 package com.example.provamobile.presentation.home
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,36 +31,24 @@ fun Home(
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
                 .padding(paddingValue)
-                .clickable { navController.navigate("bookDetail/1") }
         ) {
-            Header("")
+            Header(viewModel.homeData?.userPicture)
             FavoriteBooks(
-                favoriteBooks = listOf(),
-                onFavoriteBookClicked = {
-                    navController.navigate("bookDetail/{1}")
-                }
+                favoriteBooks = viewModel.homeData?.favoriteBooks,
+                onFavoriteBookClicked = { navController.navigate("bookDetail/$it") }
             )
             Card(shape = RoundedCornerShape(topStart = 30.dp)) {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(32.dp),
                     modifier = Modifier.padding(vertical = 32.dp)
                 ) {
-                    FavoriteAuthors(favoriteAuthors = listOf())
+                    FavoriteAuthors(favoriteAuthors = viewModel.homeData?.favoriteAuthors)
                     Library(
-                        categories = listOf(),
-                        allBooks = listOf(),
-                        onBookClicked = {
-                            navController.navigate("bookDetail/{1}")
-                        }
+                        allBooks = viewModel.homeData?.allBooks,
+                        onBookClicked = { navController.navigate("bookDetail/$it") }
                     )
                 }
             }
         }
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun FavoriteAuthorsPreview() {
-//    FavoriteAuthors()
-//}

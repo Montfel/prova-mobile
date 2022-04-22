@@ -1,0 +1,12 @@
+query Home {
+    userPicture,
+    favoriteBooks {
+        id, name, author { name }, cover
+    },
+    favoriteAuthors {
+        id, name, picture, booksCount
+    },
+    allBooks {
+        id, name, author { name }, cover, category
+    }
+}

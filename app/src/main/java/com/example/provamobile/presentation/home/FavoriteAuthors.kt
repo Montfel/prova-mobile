@@ -27,10 +27,10 @@ import com.example.provamobile.presentation.components.Section
 import com.example.provamobile.presentation.theme.Gray55
 import com.example.provamobile.presentation.theme.Gray75
 import com.example.provamobile.presentation.theme.GrayE0
-import com.example.rocketreserver.FavoriteAuthorsQuery
+import com.example.rocketreserver.HomeQuery
 
 @Composable
-fun FavoriteAuthors(favoriteAuthors: List<FavoriteAuthorsQuery.FavoriteAuthor>?) {
+fun FavoriteAuthors(favoriteAuthors: List<HomeQuery.FavoriteAuthor>?) {
     val current = LocalContext.current
     Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
         Section(text = R.string.favorite_authors)
@@ -83,9 +83,3 @@ fun FavoriteAuthors(favoriteAuthors: List<FavoriteAuthorsQuery.FavoriteAuthor>?)
         }
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun FavoriteAuthorsPreview() {
-//    FavoriteAuthors()
-//}

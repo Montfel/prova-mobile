@@ -34,27 +34,23 @@ import com.example.provamobile.presentation.theme.Gray55
 import com.example.provamobile.presentation.theme.Gray75
 import com.example.provamobile.presentation.theme.GrayE0
 import com.example.provamobile.presentation.theme.PrimaryColor
-import com.example.rocketreserver.AllBooksQuery
-import com.example.rocketreserver.CategoriesQuery
+import com.example.rocketreserver.HomeQuery
 
 @Composable
 fun Library(
-    categories: List<CategoriesQuery.AllBook>?,
-    allBooks: List<AllBooksQuery.AllBook>?,
+    allBooks: List<HomeQuery.AllBook>?,
     onBookClicked: (String) -> Unit
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
         Section(text = R.string.library, showAll = false)
 
-        val lista = categories
-            ?.distinct()
-            ?.map { name ->
-                name.category.name
+        val lista = allBooks
+            ?.map { book ->
+                book.category.name
                     .lowercase()
-                    .replaceFirstChar {
-                        it.uppercase()
-                    }
+                    .replaceFirstChar { it.uppercase() }
             }
+            ?.distinct()
             ?.sorted()
 
         LazyRow(
@@ -129,9 +125,3 @@ fun CustomChip(text: String, selected: Boolean) {
         )
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun LibraryPreview() {
-//    Library()
-//}

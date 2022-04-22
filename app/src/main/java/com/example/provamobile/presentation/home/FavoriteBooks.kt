@@ -24,11 +24,11 @@ import com.example.provamobile.R
 import com.example.provamobile.presentation.components.Section
 import com.example.provamobile.presentation.theme.Gray55
 import com.example.provamobile.presentation.theme.Gray75
-import com.example.rocketreserver.FavoriteBooksQuery
+import com.example.rocketreserver.HomeQuery
 
 @Composable
 fun FavoriteBooks(
-    favoriteBooks: List<FavoriteBooksQuery.FavoriteBook>?,
+    favoriteBooks: List<HomeQuery.FavoriteBook>?,
     onFavoriteBookClicked: (String) -> Unit
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
@@ -73,9 +73,3 @@ fun FavoriteBooks(
         }
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun FavoriteBooksPreview() {
-//    FavoriteBooks()
-//}
