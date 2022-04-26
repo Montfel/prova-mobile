@@ -10,17 +10,29 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.provamobile.presentation.components.BottomNavigationCustom
 import com.example.provamobile.presentation.theme.GrayF2
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 @Composable
 fun Home(
     navController: NavController,
-    viewModel: HomeViewModel
+    viewModel: HomeViewModel = hiltViewModel()
 ) {
+
+    val uiState by viewModel.uiState.collectAsState()
+
+    LaunchedEffect(key1 = Unit) {
+        viewModel.getHomeData()
+    }
+
     Scaffold(
         bottomBar = { BottomNavigationCustom() },
         backgroundColor = GrayF2,
@@ -32,9 +44,9 @@ fun Home(
                 .verticalScroll(rememberScrollState())
                 .padding(paddingValue)
         ) {
-            Header(viewModel.homeData?.userPicture)
+            Header(uiState.homeData?.userPicture)
             FavoriteBooks(
-                favoriteBooks = viewModel.homeData?.favoriteBooks,
+                favoriteBooks = uiState.homeData?.favoriteBooks,
                 onFavoriteBookClicked = { navController.navigate("bookDetail/$it") }
             )
             Card(shape = RoundedCornerShape(topStart = 30.dp)) {
@@ -42,9 +54,9 @@ fun Home(
                     verticalArrangement = Arrangement.spacedBy(32.dp),
                     modifier = Modifier.padding(vertical = 32.dp)
                 ) {
-                    FavoriteAuthors(favoriteAuthors = viewModel.homeData?.favoriteAuthors)
+                    FavoriteAuthors(favoriteAuthors = uiState.homeData?.favoriteAuthors)
                     Library(
-                        allBooks = viewModel.homeData?.allBooks,
+                        allBooks = uiState.homeData?.allBooks,
                         onBookClicked = { navController.navigate("bookDetail/$it") }
                     )
                 }

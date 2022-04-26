@@ -20,6 +20,9 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -28,6 +31,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.provamobile.R
@@ -37,9 +41,17 @@ import com.example.provamobile.presentation.theme.Gray75
 
 @Composable
 fun BookDetail(
+    id: String,
     navController: NavController,
-    viewModel: BookDetailViewModel
+    viewModel: BookDetailViewModel = hiltViewModel()
 ) {
+
+    LaunchedEffect(key1 = Unit) {
+        viewModel.getBookDetailData(id)
+    }
+
+    val uiState by viewModel.uiState.collectAsState()
+
     val gradientColor = listOf(Color.Black, Color.Transparent)
     Scaffold(bottomBar = { BottomNavigationCustom() }) { paddingValue ->
         Column(
@@ -49,7 +61,7 @@ fun BookDetail(
         ) {
             Box(Modifier.fillMaxSize()) {
                 AsyncImage(
-                    model = viewModel.bookDetail?.book?.cover,
+                    model = uiState.bookDetailData?.book?.cover,
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -91,7 +103,7 @@ fun BookDetail(
                         Column(modifier = Modifier.padding(top = 32.dp, start = 20.dp, end = 20.dp)) {
                             Row(horizontalArrangement = Arrangement.spacedBy(20.dp)) {
                                 Text(
-                                    text = viewModel.bookDetail?.book?.name ?: "",
+                                    text = uiState.bookDetailData?.book?.name ?: "",
                                     color = Gray55,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 20.sp,
@@ -99,9 +111,8 @@ fun BookDetail(
                                 )
                                 Image(
                                     painter = painterResource(
-                                        id = if (viewModel.bookDetail?.book?.isFavorite
-                                                ?: false
-                                        ) R.drawable.ic_baseline_favorite_24_primary
+                                        id = if (uiState.bookDetailData?.book?.isFavorite ?: false)
+                                            R.drawable.ic_baseline_favorite_24_primary
                                         else R.drawable.ic_baseline_favorite_border_24
                                     ),
                                     contentDescription = null
@@ -111,7 +122,7 @@ fun BookDetail(
                             Spacer(modifier = Modifier.height(6.dp))
 
                             Text(
-                                text = viewModel.bookDetail?.book?.author?.name ?: "",
+                                text = uiState.bookDetailData?.book?.author?.name ?: "",
                                 color = Gray75,
                                 fontSize = 14.sp
                             )
@@ -119,7 +130,7 @@ fun BookDetail(
                             Spacer(modifier = Modifier.height(20.dp))
 
                             Text(
-                                text = viewModel.bookDetail?.book?.description ?: "",
+                                text = uiState.bookDetailData?.book?.description ?: "",
                                 color = Gray55,
                                 fontSize = 16.sp
                             )

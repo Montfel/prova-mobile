@@ -13,11 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProvaMobile">
         <activity
-            android:name=".presentation.bookdetail.BookDetailActivity"
-            android:exported="false"
-            android:theme="@style/Theme.ProvaMobile" >
-        </activity>
-        <activity
             android:name=".presentation.HomeActivity"
             android:exported="true"
             android:theme="@style/Theme.ProvaMobile">

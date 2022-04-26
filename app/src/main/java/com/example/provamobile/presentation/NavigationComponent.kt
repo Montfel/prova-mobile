@@ -9,36 +9,19 @@ import com.example.provamobile.presentation.bookdetail.BookDetail
 import com.example.provamobile.presentation.bookdetail.BookDetailViewModel
 import com.example.provamobile.presentation.home.Home
 import com.example.provamobile.presentation.home.HomeViewModel
-import kotlinx.coroutines.runBlocking
 
 @Composable
-fun NavigationComponent(
-
-) {
+fun NavigationComponent() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "home") {
         composable("home") {
-
-            val homeViewModel = hiltViewModel<HomeViewModel>()
-            runBlocking {
-                homeViewModel.getHomeData()
-            }
-            Home(
-                navController = navController,
-                viewModel = homeViewModel
-            )
+            Home(navController = navController)
         }
         composable("bookDetail/{id}") {
-            val id = it.arguments?.getString("id")
-            val bookDetailViewModel = hiltViewModel<BookDetailViewModel>()
-            runBlocking {
-                bookDetailViewModel.getBookDetailData(id = id)
-            }
             BookDetail(
-                navController = navController,
-                viewModel = bookDetailViewModel
+                id = it.arguments?.getString("id")!!,
+                navController = navController
             )
         }
     }
 }
-
